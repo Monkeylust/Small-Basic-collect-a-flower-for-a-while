@@ -1,0 +1,225 @@
+start()
+Sub start
+  GraphicsWindow.Hide()
+  h = 500
+  w = 800
+GraphicsWindow.CanResize = "False"
+GraphicsWindow.Height = 500
+GraphicsWindow.Width = 800
+GraphicsWindow.Top = (Desktop.Height-h) / 2
+GraphicsWindow.Left = (Desktop.Width-w) / 2
+GraphicsWindow.Show()
+GraphicsWindow.Title = "События и интерактивность"
+GraphicsWindow.BrushColor = "Red"
+GraphicsWindow.PenColor = "#00FF00"
+GraphicsWindow.PenWidth = 5
+GraphicsWindow.BackgroundColor = "black"
+GraphicsWindow.DrawRectangle(10, 10, 780, 350)
+GraphicsWindow.DrawRectangle(10, 370, 780, 120)
+GraphicsWindow.DrawLine(250, 370, 250, 490)
+GraphicsWindow.DrawLine(450, 370, 450, 490)
+GraphicsWindow.DrawLine(650, 370, 650, 490)
+triangle = Controls.AddButton("Треугольник", 20, 378)
+Controls.SetSize(triangle,220,30)
+rectangle = Controls.AddButton("Прямоугольник", 20, 415)
+Controls.SetSize(rectangle,220,30)
+ellipse = Controls.AddButton("Круг", 20, 452)
+Controls.SetSize(ellipse,220,30)
+turn = Controls.AddButton("Поворот", 270, 395)
+Controls.SetSize(turn,70,60)
+scale = Controls.AddButton("Масштаб", 360, 395)
+Controls.SetSize(scale,70,60)
+draw = Controls.AddButton("Рисовать", 472, 400)
+Controls.SetSize(draw,70,60)
+Clear = Controls.AddButton("Очистить", 562, 400)
+Controls.SetSize(clear,70,60)
+exit = Controls.AddButton("Выход", 670, 390)
+Controls.SetSize(exit,100,80)
+transfer = Controls.AddButton("Переместить", 302, 460)
+EndSub
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+Controls.ButtonClicked = OnButtonClicked
+Sub OnButtonClicked
+If Controls.LastClickedButton = triangle Then
+  tri()
+ElseIf Controls.LastClickedButton = rectangle Then
+  rec()
+ElseIf  Controls.LastClickedButton = draw Then
+  dr()
+ElseIf Controls.LastClickedButton = ellipse Then
+  ell()
+ElseIf Controls.LastClickedButton = turn Then
+  tu()
+ElseIf Controls.LastClickedButton = scale Then
+  sca()
+ElseIf Controls.LastClickedButton = transfer Then
+  tra()
+ElseIf Controls.LastClickedButton = clear Then
+  cle()
+ElseIf Controls.LastClickedButton = exit Then
+  exi()
+EndIf
+EndSub
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+Sub dr
+  GraphicsWindow.PenColor = "#FF0000"
+  GraphicsWindow.MouseDown = MouseMove
+  GraphicsWindow.MouseMove = MouseClick
+EndSub
+
+Sub MouseMove
+ OrgX = GraphicsWindow.MouseX
+ OrgY = GraphicsWindow.MouseY
+EndSub
+
+Sub MouseClick
+  x = GraphicsWindow.MouseX
+  y = GraphicsWindow.MouseY
+  If x > 12 And x < 788 And y > 12 And y < 348 Then 
+  If Mouse.IsLeftButtonDown Then
+   Shapes.AddLine(OrgX, OrgY, x, y)
+ EndIf
+ EndIf
+OrgX = x
+OrgY = y
+EndSub
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+Sub tri
+  GraphicsWindow.BrushColor = GraphicsWindow.GetRandomColor()
+  GraphicsWindow.PenColor = "#FF1493"
+figure1 = Shapes.AddTriangle(0,0,200,100,100,250)
+GraphicsWindow.MouseMove = MouseMovetriangle
+GraphicsWindow.MouseDown = MouseClicktriangle
+EndSub
+
+Sub MouseMovetriangle
+  x = GraphicsWindow.MouseX
+  y = GraphicsWindow.MouseY
+  Shapes.Move(figure1,x+5,y+5)
+EndSub
+
+Sub MouseClicktriangle
+  x = GraphicsWindow.MouseX
+  y = GraphicsWindow.MouseY
+  If Mouse.IsLeftButtonDown Then
+    If x > 12 And x < 788 And y > 12 And y < 348 Then 
+      fi = Shapes.AddTriangle(x+5,y+5,x+205,y+105,x+105,y+255) 
+    Shapes.HideShape(figure1)
+  EndIf
+  EndIf
+EndSub
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+Sub rec
+  GraphicsWindow.BrushColor = GraphicsWindow.GetRandomColor()
+  GraphicsWindow.PenColor = "#FF1493"
+ figure2 = Shapes.AddRectangle(100,60)
+GraphicsWindow.MouseMove = MouseMoverectangle
+GraphicsWindow.MouseDown = MouseClickrectangle
+EndSub
+
+Sub MouseMoverectangle
+   x = GraphicsWindow.MouseX
+  y = GraphicsWindow.MouseY
+  Shapes.Move(figure2, x+5, y+5)
+EndSub
+
+Sub MouseClickrectangle
+  x = GraphicsWindow.MouseX
+  y = GraphicsWindow.MouseY
+  If Mouse.IsLeftButtonDown Then
+    If x > 12 And x < 788 And y > 12 And y < 348 Then 
+    fi = Shapes.AddRectangle(100, 60)
+    Shapes.Move(fi,x+5,y+5)
+    Shapes.HideShape(figure2)
+    EndIf
+  EndIf
+EndSub
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+Sub ell
+  GraphicsWindow.PenColor = "#FF1493"
+  GraphicsWindow.BrushColor = GraphicsWindow.GetRandomColor()
+ figure3 = Shapes.AddEllipse(150,100)
+ GraphicsWindow.MouseMove = MouseMoveEllipse 
+GraphicsWindow.MouseDown = MouseClickEllipse
+EndSub
+
+Sub MouseMoveEllipse 
+  x = GraphicsWindow.MouseX
+  y = GraphicsWindow.MouseY
+  Shapes.Move(figure3, x+1, y+1)
+EndSub
+
+Sub MouseClickEllipse
+  x = GraphicsWindow.MouseX
+  y = GraphicsWindow.MouseY
+  If Mouse.IsLeftButtonDown Then
+    If x > 12 And x < 788 And y > 12 And y < 348 Then 
+    fi = Shapes.AddEllipse(150,100)
+    Shapes.Move(fi,x+1,y+1)
+    Shapes.HideShape(figure3)
+    EndIf
+   EndIf
+EndSub
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+Sub tu
+GraphicsWindow.MouseDown = MouseClickk
+GraphicsWindow.MouseMove = MouseDragg
+EndSub
+
+Sub MouseClickk
+  OrgX = GraphicsWindow.MouseX
+  OrgY = GraphicsWindow.MouseY
+EndSub
+
+Sub MouseDragg
+  x = GraphicsWindow.MouseX
+  y = GraphicsWindow.MouseY
+  If Mouse.IsLeftButtonDown Then
+      Shapes.Rotate(fi, x+y)
+  EndIf
+EndSub
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+Sub sca
+GraphicsWindow.MouseDown = MouseClickkk
+GraphicsWindow.MouseMove = MouseDraggg
+EndSub
+
+Sub MouseClickkk
+  OrgX = GraphicsWindow.MouseX
+  OrgY = GraphicsWindow.MouseY
+EndSub
+
+Sub MouseDraggg
+  x = GraphicsWindow.MouseX
+  y = GraphicsWindow.MouseY
+  If Mouse.IsLeftButtonDown Then
+    Shapes.Zoom(fi, x/100, y/100)
+  EndIf
+EndSub
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+Sub tra
+  GraphicsWindow.MouseDown = MouseClickkkk
+GraphicsWindow.MouseMove = MouseDragggg
+EndSub
+
+Sub MouseClickkkk
+  OrgX = GraphicsWindow.MouseX
+  OrgY = GraphicsWindow.MouseY
+EndSub
+
+Sub MouseDragggg
+  x = GraphicsWindow.MouseX
+  y = GraphicsWindow.MouseY
+  If Mouse.IsLeftButtonDown Then
+    Shapes.Move(fi, x, y)
+  EndIf
+EndSub
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+Sub cle
+  GraphicsWindow.Clear()
+  start()
+  EndSub
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+Sub exi
+  Program.End()
+EndSub
