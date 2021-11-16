@@ -1,0 +1,242 @@
+GraphicsWindow.Hide()
+gw = 800
+gh = 600
+GraphicsWindow.CanResize = "False"
+GraphicsWindow.Width = gw
+GraphicsWindow.Height = gh
+GraphicsWindow.Top = ( Desktop.Height - gh ) / 2
+GraphicsWindow.Left = ( Desktop.Width - gw ) / 2
+GraphicsWindow.Title = "Игра собери цветок от любимки"
+GraphicsWindow.Show()
+GraphicsWindow.DrawRectangle(10, 10, 450, 580)
+GraphicsWindow.DrawRectangle(470, 10, 320, 580)
+GraphicsWindow.DrawRectangle(480, 20, 300, 560)
+GraphicsWindow.DrawLine(630,20, 630, 580)
+GraphicsWindow.DrawLine(480,150, 780, 150)
+GraphicsWindow.DrawLine(480,300, 780, 300)
+GraphicsWindow.DrawLine(480,450, 780, 450)
+
+GraphicsWindow.BrushColor = "#3975e5"
+ GraphicsWindow.FillRectangle(300, 12, 150, 25)
+ GraphicsWindow.BrushColor = "Black"
+ GraphicsWindow.FontSize = 15
+  TimeText = Shapes.AddText("Время: 00:00")
+  Shapes.Move(TimeText, 310, 16)
+
+StartTime = Clock.ElapsedMilliseconds
+  
+GraphicsWindow.BrushColor = "Brown"
+stem1 = Shapes.AddRectangle(10, 250)
+Shapes.Move(stem1, 250, 300)
+Shapes.SetOpacity(stem1, 30)
+a8 = Shapes.GetLeft(stem1)
+b8 = Shapes.GetTop(stem1)
+
+GraphicsWindow.BrushColor = "Pink"
+sheet1 = Shapes.AddEllipse(60, 100)
+Shapes.Move(sheet1, 225, 201)
+Shapes.SetOpacity(sheet1, 30)
+a = Shapes.GetLeft(sheet1)
+b = Shapes.GetTop(sheet1)
+
+GraphicsWindow.BrushColor = "Green"
+sheet2 = Shapes.AddEllipse(80, 40)
+Shapes.Move(sheet2, 258, 391)
+Shapes.SetOpacity(sheet2, 30)
+a2 = Shapes.GetLeft(sheet2)
+b2 = Shapes.GetTop(sheet2)
+
+GraphicsWindow.BrushColor = "Green"
+sheet3 = Shapes.AddEllipse(80, 40)
+Shapes.Move(sheet3, 175, 353)
+Shapes.Rotate(sheet3, 30)
+Shapes.SetOpacity(sheet3, 30)
+a3 = Shapes.GetLeft(sheet3)
+b3 = Shapes.GetTop(sheet3)
+
+GraphicsWindow.BrushColor = "Yellow"
+sheet4 = Shapes.AddEllipse(30, 30)
+Shapes.Move(sheet4, 239, 172)
+Shapes.SetOpacity(sheet4, 30)
+a4 = Shapes.GetLeft(sheet4)
+b4 = Shapes.GetTop(sheet4)
+
+GraphicsWindow.BrushColor = "Pink"
+sheet5 = Shapes.AddEllipse(60, 100)
+Shapes.Move(sheet5, 285, 150)
+Shapes.Rotate(sheet5, 110)
+Shapes.SetOpacity(sheet5, 30)
+a5 = Shapes.GetLeft(sheet5)
+b5 = Shapes.GetTop(sheet5)
+
+GraphicsWindow.BrushColor = "Pink"
+sheet6 = Shapes.AddEllipse(60, 100)
+Shapes.Move(sheet6, 160, 135)
+Shapes.Rotate(sheet6, 90)
+Shapes.SetOpacity(sheet6, 30)
+a6 = Shapes.GetLeft(sheet6)
+b6 = Shapes.GetTop(sheet6)
+
+GraphicsWindow.BrushColor = "Pink"
+sheet7 = Shapes.AddEllipse(60, 100)
+Shapes.Move(sheet7, 242, 75)
+Shapes.Rotate(sheet7, 20)
+Shapes.SetOpacity(sheet7, 30)
+a7 = Shapes.GetLeft(sheet7)
+b7 = Shapes.GetTop(sheet7)
+
+GraphicsWindow.BrushColor = "Pink"
+sheet77 = Shapes.AddEllipse(60, 100)
+Shapes.Move(sheet77, 529, 335)
+Shapes.Rotate(sheet77, 20)
+
+GraphicsWindow.BrushColor = "Pink"
+sheet66 = Shapes.AddEllipse(60, 100)
+Shapes.Move(sheet66, 670, 180)
+Shapes.Rotate(sheet66, 90)
+
+GraphicsWindow.BrushColor = "Pink"
+sheet55 = Shapes.AddEllipse(60, 100)
+Shapes.Move(sheet55, 665, 337)
+Shapes.Rotate(sheet55, 110)
+
+GraphicsWindow.BrushColor = "Yellow"
+sheet44 = Shapes.AddEllipse(30, 30)
+Shapes.Move(sheet44, 539, 213)
+
+GraphicsWindow.BrushColor = "Green"
+sheet33 = Shapes.AddEllipse(80, 40)
+Shapes.Move(sheet33, 653, 480)
+Shapes.Rotate(sheet33, 30)
+
+GraphicsWindow.BrushColor = "Green"
+sheet22 = Shapes.AddEllipse(80, 40)
+Shapes.Move(sheet22, 653, 66)
+
+GraphicsWindow.BrushColor = "Pink"
+sheet11 = Shapes.AddEllipse(60, 100)
+Shapes.Move(sheet11, 515, 461)
+
+GraphicsWindow.BrushColor = "Brown"
+stem2 = Shapes.AddRectangle(5, 100)
+Shapes.Move(stem2, 550, 30)
+
+GraphicsWindow.MouseDown = MouseClick
+GraphicsWindow.MouseMove = MouseDrag
+ 
+Sub MouseClick
+  OrgX = GraphicsWindow.MouseX
+  OrgY = GraphicsWindow.MouseY
+  EndSub
+
+Sub MouseDrag
+ x = GraphicsWindow.MouseX
+ y = GraphicsWindow.MouseY
+If Mouse.IsLeftButtonDown Then 
+  If OrgX > 480 and OrgX <= 630 and OrgY > 20 and OrgY <= 148 Then
+    Shapes.Move(stem2, x, y)
+   GraphicsWindow.MouseUp = MouseUPstem
+       Elseif OrgX > 480 And OrgX <= 630 And OrgY > 449 And OrgY <= 579 Then
+      Shapes.Move(sheet11, x, y)
+          ElseIf OrgX > 630 and OrgX <= 778 and OrgY > 20 and OrgY <= 148 Then
+      Shapes.Move(sheet22, x, y)
+             ElseIf OrgX > 630 and OrgX <= 778 and OrgY > 449 and OrgY <= 578 Then
+      Shapes.Move(sheet33, x, y)
+             ElseIf OrgX > 480 and OrgX <= 630 and OrgY > 151 and OrgY <= 300 Then
+      Shapes.Move(sheet44, x, y)
+           ElseIf OrgX > 630 and OrgX <= 778 and OrgY > 301 and OrgY <= 449 Then
+      Shapes.Move(sheet55, x, y)
+           ElseIf OrgX > 630 and OrgX <= 778 and OrgY > 150 and OrgY <= 300 Then
+      Shapes.Move(sheet66, x, y)
+           ElseIf OrgX > 480 and OrgX <= 630 and OrgY > 300 and OrgY <= 449 Then
+      Shapes.Move(sheet77, x, y)
+    EndIf
+  else 
+    GraphicsWindow.MouseUp = MouseUP
+  EndIf
+   EndSub
+  
+  Sub MouseUP
+    If x > a-6 and x <= a+6 and y > b-6 and y <= b+6 Then
+      Shapes.SetOpacity(sheet1, 100)
+      Shapes.Remove(sheet11)
+  ElseIf x > a2-6 and x <= a2+6 and y > b2-6 and y <= b2+6 Then
+      Shapes.SetOpacity(sheet2, 100)
+      Shapes.Remove(sheet22)
+  ElseIf x > a3-6 and x <= a3+6 and y > b3-6 and y <= b3+6 Then
+      Shapes.SetOpacity(sheet3, 100)
+      Shapes.Remove(sheet33)
+  ElseIf x > a4-6 and x <= a4+6 and y > b4-6 and y <= b4+6 Then
+      Shapes.SetOpacity(sheet4, 100)
+      Shapes.Remove(sheet44)
+  ElseIf x > a5-6 and x <= a5+6 and y > b5-6 and y <= b5+6 Then
+      Shapes.SetOpacity(sheet5, 100)
+      Shapes.Remove(sheet55)
+  ElseIf x > a6-6 and x <= a6+6 and y > b6-6 and y <= b6+6 Then
+      Shapes.SetOpacity(sheet6, 100)
+      Shapes.Remove(sheet66)
+  ElseIf x > a7-6 and x <= a7+6 and y > b7-6 and y <= b7+6 Then
+      Shapes.SetOpacity(sheet7, 100)
+      Shapes.Remove(sheet77)
+  Else
+      Shapes.Animate(sheet66, 670, 180, 200)
+      Shapes.Animate(sheet55, 665, 337, 200)
+      Shapes.Animate(sheet44, 539, 213, 200)
+      Shapes.Animate(sheet33, 653, 480, 200)
+      Shapes.Animate(sheet22, 653, 66, 200)
+      Shapes.Animate(sheet11, 515, 461, 200)
+      Shapes.Animate(sheet77, 529, 335, 200)
+      EndIf
+    EndSub
+    
+    Sub MouseUPstem
+      If x > a8 and x <= a8+10 and y > b8 and y <= b8+250 Then
+      Shapes.SetOpacity(stem1, 100)
+      Shapes.Remove(stem2)
+    Else 
+      Shapes.Animate(stem2, 550, 30, 200)
+    EndIf
+    EndSub
+      
+    
+    GraphicsWindow.BrushColor = "Black"
+    send = Controls.AddButton("Готово", 343, 545)
+    Controls.SetSize(send,100,30)
+    
+    Controls.ButtonClicked = OnButtonClicked
+    Sub OnButtonClicked
+      If Controls.LastClickedButton = send Then
+        GameOver() 
+      EndIf
+     EndSub 
+        
+        Sub GameOver
+      If Shapes.GetOpacity(stem1) = 100 And Shapes.GetOpacity(sheet1) = 100 And Shapes.GetOpacity(sheet2) = 100 And Shapes.GetOpacity(sheet3) = 100 And Shapes.GetOpacity(sheet4) = 100 And Shapes.GetOpacity(sheet5) = 100 And Shapes.GetOpacity(sheet6) = 100 And Shapes.GetOpacity(sheet7) = 100 Then
+        l = 9
+        GraphicsWindow.ShowMessage("Ваш результат - " + TimeDisplayText ,"Поздравляем")
+        Program.End()
+        EndIf
+       EndSub
+       
+       l=10
+    While l>=10
+    Time()
+    EndWhile
+    Sub Time
+      FinishTime = Clock.ElapsedMilliseconds - StartTime
+      TotalSeconds = Math.Round(FinishTime / 1000)
+      Seconds = Math.Remainder(TotalSeconds, 60)
+      Minutes = Math.Floor(TotalSeconds / 60)
+      Hours = Math.Floor(Minutes / 60)
+      If Seconds < 10 Then
+Seconds = Text.Append("0", Seconds)
+EndIf
+If Minutes < 10 Then
+Minutes = Text.Append("0", Minutes)
+EndIf
+If Hours < 0 Then
+  Hours = Text.Append("0", Hours)
+  EndIf
+TimeDisplayText = Hours + ":" + Minutes + ":" + Seconds
+Shapes.SetText(TimeText, "Время: " + TimeDisplayText)
+EndSub
